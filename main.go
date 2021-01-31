@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
+	"./jpeg"
 	"./tagreader"
 	"./utils"
-	jpegstructure "github.com/dsoprea/go-jpeg-image-structure"
 )
 
 func main() {
@@ -17,13 +17,7 @@ func main() {
 
 	for _, file := range result {
 
-		jmp := jpegstructure.NewJpegMediaParser()
-		mediaContext, err := jmp.ParseFile(file)
-		if err != nil {
-
-		}
-		_, data, _ := mediaContext.Exif()
-
+		data := jpeg.GetExifData(file)
 		tagReader := tagreader.CreateExifTagReader(data)
 		fmt.Println(tagReader.GetTag())
 	}
