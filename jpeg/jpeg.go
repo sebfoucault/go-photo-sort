@@ -1,7 +1,7 @@
 package jpeg
 
 import (
-	jpegstructure "github.com/dsoprea/go-jpeg-image-structure"
+	jpegstructure "github.com/dsoprea/go-jpeg-image-structure/v2"
 )
 
 func GetExifData(file string) []byte {

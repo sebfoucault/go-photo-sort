@@ -3,7 +3,7 @@ package tagreader
 import (
 	exif "github.com/dsoprea/go-exif/v3"
 	exifcommon "github.com/dsoprea/go-exif/v3/common"
-	log "github.com/dsoprea/go-logging"
+	log "github.com/dsoprea/go-logging/v2"
 )
 
 type ExifTagReader struct {

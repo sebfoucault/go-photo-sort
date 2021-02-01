@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"./jpeg"
-	"./tagreader"
-	"./utils"
+	"github.com/sebfoucault/go-photo-sort/jpeg"
+	"github.com/sebfoucault/go-photo-sort/tagreader"
+	"github.com/sebfoucault/go-photo-sort/utils"
 )
 
 func main() {
