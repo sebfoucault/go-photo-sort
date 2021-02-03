@@ -1,3 +1,5 @@
+github.com/corbym/gocrest v1.0.5 h1:6FUvLjKkKQ2hwMel8OKIZqN3slYEOHIFY9+lVaroFnU=
+github.com/corbym/gocrest v1.0.5/go.mod h1:lF3xBPnOU5DYDpa/vUq63SMxUhd5UAwGgmA8Z2pJ/Tk=
 github.com/dsoprea/go-exif v0.0.0-20210131231135-d154f10435cc h1:AuzYp98IFVOi0NU/WcZyGDQ6vAh/zkCjxGD3kt8aLzA=
 github.com/dsoprea/go-exif/v2 v2.0.0-20200321225314-640175a69fe4/go.mod h1:Lm2lMM2zx8p4a34ZemkaUV95AnMl4ZvLbCUbwOvLC2E=
 github.com/dsoprea/go-exif/v2 v2.0.0-20200604193436-ca8584a0e1c4 h1:Mg7pY7kxDQD2Bkvr1N+XW4BESSIQ7tTTR7Vv+Gi2CsM=

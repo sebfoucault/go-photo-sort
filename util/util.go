@@ -1,4 +1,4 @@
-package utils
+package util
 
 import (
 	"os"
@@ -6,15 +6,15 @@ import (
 	"strings"
 )
 
+// FileInfoPredicate represents a predicate on the os.FileInfo type
 type FileInfoPredicate func(fileInfo os.FileInfo) bool
 
-//
-// Returns true if the baseFileName has its extension part of the extensions array, false otherwise
+// HasExtension returns true if the baseFileName has its extension part of the extensions array, false otherwise
 func HasExtension(baseFileName string, extensions []string) bool {
 
+	var lowerBaseFileName = strings.ToLower(baseFileName)
 	for _, extension := range extensions {
-		var lowerBaseFileName = strings.ToLower(baseFileName)
-		if strings.HasSuffix(lowerBaseFileName, extension) {
+		if strings.HasSuffix(lowerBaseFileName, strings.ToLower(extension)) {
 			return true
 		}
 	}
@@ -22,8 +22,7 @@ func HasExtension(baseFileName string, extensions []string) bool {
 	return false
 }
 
-//
-// Lists all the files under rootDir that matches predicate
+// ListFiles returns all the files under rootDir that matches predicate
 func ListFiles(rootDir string, predicate FileInfoPredicate) []string {
 
 	var files []string
