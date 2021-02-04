@@ -12,9 +12,9 @@ type FileInfoPredicate func(fileInfo os.FileInfo) bool
 // HasExtension returns true if the baseFileName has its extension part of the extensions array, false otherwise
 func HasExtension(baseFileName string, extensions []string) bool {
 
-	var lowerBaseFileName = strings.ToLower(baseFileName)
+	var lowerExtension = filepath.Ext(baseFileName)
 	for _, extension := range extensions {
-		if strings.HasSuffix(lowerBaseFileName, strings.ToLower(extension)) {
+		if lowerExtension == strings.ToLower(extension) {
 			return true
 		}
 	}
