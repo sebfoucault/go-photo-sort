@@ -29,7 +29,7 @@ func ListFiles(rootDir string, predicate FileInfoPredicate) []string {
 
 	err := filepath.Walk(rootDir, func(filePath string, fileInfo os.FileInfo, err error) error {
 
-		if predicate(fileInfo) {
+		if predicate == nil || predicate(fileInfo) {
 			files = append(files, filePath)
 		}
 

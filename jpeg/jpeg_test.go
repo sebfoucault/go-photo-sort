@@ -12,14 +12,14 @@ import (
 
 func TestGetExifData(t *testing.T) {
 
-	data, _ := jpeg.GetExifData(testutil.TestImgPath("scotland-nicolas-boulesteix.jpg"))
+	data, _ := jpeg.GetExifData(testutil.GetTestImgPath("scotland-nicolas-boulesteix.jpg"))
 
 	then.AssertThat(t, data, is.Not(is.Nil()))
 }
 
 func TestGetExifDataWithNonExistingFile(t *testing.T) {
 
-	data, err := jpeg.GetExifData(testutil.TestImgPath("does-not-exist.jpg"))
+	data, err := jpeg.GetExifData(testutil.GetTestImgPath("does-not-exist.jpg"))
 
 	then.AssertThat(t, data, is.Nil())
 	then.AssertThat(t, err, is.Not(is.Nil()))

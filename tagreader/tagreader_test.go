@@ -16,27 +16,27 @@ import (
 
 func TestCreateReader(t *testing.T) {
 
-	reader := createReaderForFile(testutil.TestImgPath("scotland-nicolas-boulesteix.jpg"))
+	reader := createReaderForFile(testutil.GetTestImgPath("scotland-nicolas-boulesteix.jpg"))
 	then.AssertThat(t, reader, is.Not(is.Nil()))
 }
 
 func TestGetTagByName(t *testing.T) {
 
-	reader := createReaderForFile(testutil.TestImgPath("scotland-nicolas-boulesteix.jpg"))
+	reader := createReaderForFile(testutil.GetTestImgPath("scotland-nicolas-boulesteix.jpg"))
 	width := reader.GetTagByName("ImageWidth")
 	then.AssertThat(t, width, is.EqualTo("1920"))
 }
 
 func TestGetTagByID(t *testing.T) {
 
-	reader := createReaderForFile(testutil.TestImgPath("scotland-nicolas-boulesteix.jpg"))
+	reader := createReaderForFile(testutil.GetTestImgPath("scotland-nicolas-boulesteix.jpg"))
 	width := reader.GetTagByID(256)
 	then.AssertThat(t, width, is.EqualTo("1920"))
 }
 
 func TestGetAllTags(t *testing.T) {
 
-	reader := createReaderForFile(testutil.TestImgPath("scotland-nicolas-boulesteix.jpg"))
+	reader := createReaderForFile(testutil.GetTestImgPath("scotland-nicolas-boulesteix.jpg"))
 	tags := reader.GetAllTags()
 	then.AssertThat(t, tags, has.Length(42))
 }
