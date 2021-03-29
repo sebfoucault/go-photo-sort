@@ -1,6 +1,7 @@
 go-photo-sort
 
 ![Go](https://github.com/sebfoucault/go-photo-sort/workflows/Go/badge.svg)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fsebfoucault%2Fgo-photo-sort.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fsebfoucault%2Fgo-photo-sort?ref=badge_shield)
 
 ## Supported patterns for date
 
@@ -22,3 +23,7 @@ In the table below, examples are based on the following date: "2006:01:02 15:04:
 | EE      | Day in week with short name   | Mon     |
 | EEE     | Day in week with short name   | Mon     |
 | EEEE    | Day in week with long name    | Monday  |
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fsebfoucault%2Fgo-photo-sort.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fsebfoucault%2Fgo-photo-sort?ref=badge_large)
