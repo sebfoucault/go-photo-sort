@@ -3,7 +3,7 @@ package tagreader_test
 import (
 	"testing"
 
-	"github.com/sebfoucault/go-photo-sort/jpeg"
+	"github.com/sebfoucault/go-photo-sort/fileformats"
 	"github.com/sebfoucault/go-photo-sort/tagreader"
 	"github.com/sebfoucault/go-photo-sort/testutil"
 
@@ -16,29 +16,29 @@ import (
 
 func TestCreateReader(t *testing.T) {
 
-	reader := createReaderForFile(testutil.GetTestImgPath("scotland-nicolas-boulesteix.jpg"))
+	reader := createReaderForFile(testutil.GetTestImgPath("mandala-small.jpg"))
 	then.AssertThat(t, reader, is.Not(is.Nil()))
 }
 
 func TestGetTagByName(t *testing.T) {
 
-	reader := createReaderForFile(testutil.GetTestImgPath("scotland-nicolas-boulesteix.jpg"))
-	width := reader.GetTagByName("ImageWidth")
-	then.AssertThat(t, width, is.EqualTo("1920"))
+	reader := createReaderForFile(testutil.GetTestImgPath("mandala-small.jpg"))
+	width := reader.GetTagByName("Model")
+	then.AssertThat(t, width, is.EqualTo("DSC-RX100M2"))
 }
 
 func TestGetTagByID(t *testing.T) {
 
-	reader := createReaderForFile(testutil.GetTestImgPath("scotland-nicolas-boulesteix.jpg"))
-	width := reader.GetTagByID(256)
-	then.AssertThat(t, width, is.EqualTo("1920"))
+	reader := createReaderForFile(testutil.GetTestImgPath("mandala-small.jpg"))
+	width := reader.GetTagByID(0x0110)
+	then.AssertThat(t, width, is.EqualTo("DSC-RX100M2"))
 }
 
 func TestGetAllTags(t *testing.T) {
 
-	reader := createReaderForFile(testutil.GetTestImgPath("scotland-nicolas-boulesteix.jpg"))
+	reader := createReaderForFile(testutil.GetTestImgPath("mandala-small.jpg"))
 	tags := reader.GetAllTags()
-	then.AssertThat(t, tags, has.Length(42))
+	then.AssertThat(t, tags, has.Length(46))
 }
 
 func createReaderForFile(file string) *tagreader.ExifTagReader {
@@ -47,7 +47,7 @@ func createReaderForFile(file string) *tagreader.ExifTagReader {
 }
 
 func getExifData(file string) []byte {
-	data, err := jpeg.GetExifData(file)
+	data, err := fileformats.GetJpegExifData(file)
 	log.PanicIf(err)
 	return data
 }

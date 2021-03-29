@@ -1,9 +1,9 @@
-package jpeg_test
+package fileformats_test
 
 import (
 	"testing"
 
-	"github.com/sebfoucault/go-photo-sort/jpeg"
+	"github.com/sebfoucault/go-photo-sort/fileformats"
 	"github.com/sebfoucault/go-photo-sort/testutil"
 
 	"github.com/corbym/gocrest/is"
@@ -12,14 +12,14 @@ import (
 
 func TestGetExifData(t *testing.T) {
 
-	data, _ := jpeg.GetExifData(testutil.GetTestImgPath("scotland-nicolas-boulesteix.jpg"))
+	data, _ := fileformats.GetJpegExifData(testutil.GetTestImgPath("mandala-small.jpg"))
 
 	then.AssertThat(t, data, is.Not(is.Nil()))
 }
 
 func TestGetExifDataWithNonExistingFile(t *testing.T) {
 
-	data, err := jpeg.GetExifData(testutil.GetTestImgPath("does-not-exist.jpg"))
+	data, err := fileformats.GetJpegExifData(testutil.GetTestImgPath("does-not-exist.jpg"))
 
 	then.AssertThat(t, data, is.Nil())
 	then.AssertThat(t, err, is.Not(is.Nil()))
