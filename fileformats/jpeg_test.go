@@ -12,7 +12,7 @@ import (
 
 func TestGetExifData(t *testing.T) {
 
-	data, _ := fileformats.GetJpegExifData(testutil.GetTestImgPath("scotland-nicolas-boulesteix.jpg"))
+	data, _ := fileformats.GetJpegExifData(testutil.GetTestImgPath("mandala-small.jpg"))
 
 	then.AssertThat(t, data, is.Not(is.Nil()))
 }
