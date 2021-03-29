@@ -1,6 +1,8 @@
 package tagreader
 
 import (
+	"time"
+
 	exif "github.com/dsoprea/go-exif/v3"
 	exifcommon "github.com/dsoprea/go-exif/v3/common"
 	log "github.com/dsoprea/go-logging/v2"
@@ -72,11 +74,17 @@ func (exifTagReader *ExifTagReader) GetAllTags() map[string]Tag {
 
 	// Creates the iterator that will add an entry in the map for each tag
 	visitor := func(ifd *exif.Ifd, tagEntry *exif.IfdTagEntry) error {
-		result[tagEntry.TagName()] = Tag{
-			Value: getValueFromEntry(tagEntry),
-			Name:  tagEntry.TagName(),
+
+		tagName := tagEntry.TagName()
+		tagValue := getValueFromEntry(tagEntry)
+
+		// Adds the standard tag in the Exif map
+		result[tagName] = Tag{
+			Name:  tagName,
+			Value: tagValue,
 			Path:  tagEntry.IfdPath(),
 		}
+
 		return nil
 	}
 
@@ -91,4 +99,38 @@ func getValueFromEntry(entry *exif.IfdTagEntry) string {
 	result, err := entry.FormatFirst()
 	log.PanicIf(err)
 	return result
+}
+
+// exifDateLayout specifies the format (aka. layout) to be used for parsing Exif dates with time.Parse.
+// This format is specified in "Exchangeable image file format for digital still cameras: Exif Version 2.2"
+const exifDateLayout = "2006:01:02 15:04:05"
+
+var exifDateTags = map[string]bool{
+	"DateTimeOriginal":  true,
+	"DateTimeDigitized": true,
+}
+
+// GetStandardExifDateTags returns an array containing the name of standard exif tag representing date
+func GetStandardExifDateTags() []string {
+
+	s := make([]string, len(exifDateTags))
+	for k := range exifDateTags {
+		s = append(s, k)
+	}
+	return s
+}
+
+// IsDateExifTag returns true if the tagName passed in parameter is a date tag
+func IsDateExifTag(tagName string) bool {
+
+	if _, ok := exifDateTags[tagName]; ok {
+		return true
+	}
+	return false
+}
+
+// ParseExifDate returns a time.Time from the value of an Exif tag representing a date
+func ParseExifDate(s string) (time.Time, error) {
+	result, error := time.Parse(exifDateLayout, s)
+	return result, error
 }
