@@ -1,12 +1,13 @@
-# .github/workflows/release.yaml
+name: Release
 
-on: 
+on:
   release:
     types: [created]
+  workflow_dispatch:
 
 jobs:
-  release-linux-amd64:
-    name: release linux/amd64
+  release-linux-386:
+    name: release linux/386
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -15,4 +16,4 @@ jobs:
         goversion: 1.15
         github_token: ${{ secrets.GITHUB_TOKEN }}
         goos: linux
-        goarch: amd64
+        goarch: 386
