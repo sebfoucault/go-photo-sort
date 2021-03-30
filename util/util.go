@@ -75,6 +75,8 @@ func MapFile(path string, mapper FileMapper) (string, string) {
 	return destDirName, destFileName
 }
 
+// CopyFile copies the file located in sourcePath to destinationPath.
+// If some directories does not exist within the destinationPath, these directories will be automatically created.
 func CopyFile(sourcePath string, destinationPath string) (int64, error) {
 
 	sourceFileStat, err := os.Stat(sourcePath)
@@ -108,8 +110,7 @@ func CopyFile(sourcePath string, destinationPath string) (int64, error) {
 	return size, err
 }
 
-const ExifDateFormat = "2006:01:02 15:04:05"
-
+// ApplyTemplate creates a template.Template from templateDefinition and then executes it using information provided by context
 func ApplyTemplate(templateName string, templateDefinition string, context interface{}) string {
 
 	template := safeParseTemplate(templateName, templateDefinition)
@@ -128,6 +129,21 @@ func safeParseTemplate(templateName string, templateDefinition string) *template
 	return tmpl
 }
 
+// ExtractTimeComponents extracts from t the following components:
+// - yy   : Year on two digits
+// - yyyy : Year on four digits
+// - dd   : Day in month
+// - MM   : Month in year on two dgits
+// - MMM  : Month name (short form - eg. Jan)
+// - MMMM : Month name (long form - eg. January)
+// - HH   : Hour (0-23)
+// - hh   : Hour (1-12)
+// - mm   : Minute in hour
+// - ss   : Second in minute
+// - a    : AM/PM marker in lower case
+// - EE   : Day of week (short form - eg. Mon)
+// - EEE   : Day of week (short form - eg. Mon)
+// - EEEE  : Day of week (long form - eg. Monday)
 func ExtractTimeComponents(t time.Time) map[string]string {
 
 	// "2006:01:02 15:04:05"
