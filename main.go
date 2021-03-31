@@ -74,7 +74,7 @@ func main() {
 
 func doIt(inputDirectory string, outputDirectory string, cfg config) {
 
-	result := util.ListFiles(inputDirectory, util.IsFileWithExtension([]string{".jpg"}))
+	result := util.ListFiles(inputDirectory, util.IsFileWithExtension([]string{".jpg", ".jpeg", ".jfif", ".pjpeg", ".pjp"}))
 
 	for _, file := range result {
 
