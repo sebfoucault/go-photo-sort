@@ -1,6 +1,6 @@
 go-photo-sort
 
-![Go](https://github.com/sebfoucault/go-photo-sort/workflows/Go/badge.svg)
+![Go](https://github.com/sebfoucault/go-photo-sort/workflows/Build%20and%20Test/badge.svg)
 
 ## Supported patterns for date
 
