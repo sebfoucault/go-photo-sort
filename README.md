@@ -22,3 +22,18 @@ In the table below, examples are based on the following date: "2006:01:02 15:04:
 | EE      | Day in week with short name   | Mon     |
 | EEE     | Day in week with short name   | Mon     |
 | EEEE    | Day in week with long name    | Monday  |
+
+## Credits
+
+gops makes use of the following open source projects:
+
+| Project                 | URL                                                |
+| ----------------------- | -------------------------------------------------- |
+| cli                     | https://github.com/urfave/cli                      |
+| gocrest                 | https://github.com/corbym/gocrest                  |
+| go-exif                 | https://github.com/dsoprea/go-exif                 |
+| go-jpeg-image-structure | https://github.com/dsoprea/go-jpeg-image-structure |
+| go-logging              | https://github.com/dsoprea/go-logging              |
+| go-png-image-structure  | https://github.com/dsoprea/go-png-image-structure  |
+
+Thanks a lot to all the contributors of these projects!
